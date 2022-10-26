@@ -174,7 +174,7 @@ namespace BILHETERIA
             this.Controls.Add(this.buttonComprar);
             this.Controls.Add(this.listBoxCartaz);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "CINE 99";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMeia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInteira)).EndInit();

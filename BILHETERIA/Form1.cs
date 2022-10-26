@@ -10,9 +10,6 @@ using System.Windows.Forms;
 
 namespace BILHETERIA
 {
-
-   
-
     public partial class Form1 : Form
     {
         public Form1()
@@ -71,7 +68,7 @@ namespace BILHETERIA
                 
                     if (bilheteria.QtdIngressosMeia > 0 || bilheteria.QtdIngressosInteira > 0)
                     {
-                        MessageBox.Show("VOCÊ IRÁ ASSISTIR: " + bilheteria.Filme + " ÀS " + bilheteria.Sessao + " | " + bilheteria.Calcula.ToString("C"));
+                        MessageBox.Show("VOCÊ IRÁ ASSISTIR: " + bilheteria.Filme + " ÀS " + bilheteria.Sessao + " | TOTAL: " + bilheteria.Calcula.ToString("C"));
                     }
                     else
                     {
