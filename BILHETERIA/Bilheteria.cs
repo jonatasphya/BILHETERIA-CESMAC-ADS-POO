@@ -11,33 +11,31 @@ namespace BILHETERIA
         private int qtdIngressosMeia;
         private string filme;
         private string sessao;
-        private float total;
         private string[] filmes = { "Adão Negro", "Aterrorizante 2", "Halloween Ends", "A Queda", "Sorria" };
         private string[] sessoes = { "16:20", "17:00", "20:00", "21:30" };
+        private float valorInteira = 32;
+        private float valorMeia = 16;
 
+        public float ValorInteira
+        {
+            get { return valorInteira; }
+        }
+
+        public float ValorMeia
+        {
+            get { return valorMeia; }
+        }
 
         public string Filme
         {
-            get
-            {
-                return filme;
-            }
-            set
-            {
-                filme = value;
-            }
+            get { return filme; }
+            set { filme = value; }
         }
 
         public string Sessao
         {
-            get
-            {
-                return sessao;
-            }
-            set
-            {
-                sessao = value;
-            }
+            get { return sessao; }
+            set { sessao = value; }
         }
 
         public string[] Filmes
@@ -48,47 +46,53 @@ namespace BILHETERIA
         public string[] Sessoes
         {
             get { return sessoes; }
-            }
         }
 
         public int QtdIngressosMeia
         {
-            get
-            {
-                return qtdIngressosMeia;
-            }
-
-            set
-            {
-                qtdIngressosMeia = value;
-            }
+            get { return qtdIngressosMeia; }
+            set { qtdIngressosMeia = value; }
         }
 
         public int QtdIngressosInteira
         {
-            get
-            {
-                return qtdIngressosInteira;
-            }
-
-            set
-            {
-                qtdIngressosInteira = value;
-            }
+            get { return qtdIngressosInteira; }
+            set { qtdIngressosInteira = value; }
         }
 
-        public float Calcula
+        public float CalculaTotal
         {
-            get
-            {
-                return calcula();
-            }
+            get { return calculaTotal(); }
+            
         }
 
-        private float calcula()
+        public float CalculaMeias
         {
-            total = (qtdIngressosMeia * 16) + (qtdIngressosInteira * 32);
-            return total;
+            get { return calculaMeias(); }
+        }
+
+        public float CalculaInteiras
+        {
+            get { return calculaInteiras(); }
+        }
+
+        private float calculaTotal()
+        {
+            float total;
+            return total = (qtdIngressosMeia * valorMeia) + (qtdIngressosInteira * valorInteira);
+           
+        }
+
+        private float calculaMeias()
+        {
+            float total;
+            return total = qtdIngressosMeia * valorMeia;
+        }
+
+        private float calculaInteiras()
+        {
+            float total;
+            return total = qtdIngressosInteira * valorInteira;
         }
 
     }

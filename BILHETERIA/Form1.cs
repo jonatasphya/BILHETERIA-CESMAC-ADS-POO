@@ -21,9 +21,15 @@ namespace BILHETERIA
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            foreach(var f in bilheteria.Filmes)
+            {
+                listBoxCartaz.Items.Add(f);
+            }
 
-            listBoxCartaz.Items.AddRange(bilheteria.Filmes);
-            listBoxSessoes.Items.AddRange(bilheteria.Sessoes);
+            foreach (var f in bilheteria.Sessoes)
+            {
+                listBoxSessoes.Items.Add(f);
+            }
             
         }
 
@@ -32,7 +38,7 @@ namespace BILHETERIA
             if (listBoxCartaz.SelectedIndex >= 0 && listBoxSessoes.SelectedIndex >= 0)
             {
                 bilheteria.QtdIngressosInteira = Convert.ToInt32(numericUpDownInteira.Value);
-                labelSubtotal.Text = bilheteria.Calcula.ToString("C");
+                labelSubtotal.Text = bilheteria.CalculaTotal.ToString("C");
             }
             else
             {
@@ -49,7 +55,7 @@ namespace BILHETERIA
             if (listBoxCartaz.SelectedIndex >= 0 && listBoxSessoes.SelectedIndex >= 0)
             {
                 bilheteria.QtdIngressosMeia = Convert.ToInt32(numericUpDownMeia.Value);
-                labelSubtotal.Text = bilheteria.Calcula.ToString("C");
+                labelSubtotal.Text = bilheteria.CalculaTotal.ToString("C");
             }
             else
             {
@@ -68,8 +74,31 @@ namespace BILHETERIA
                 
                     if (bilheteria.QtdIngressosMeia > 0 || bilheteria.QtdIngressosInteira > 0)
                     {
-                        MessageBox.Show("VOCÊ IRÁ ASSISTIR: " + bilheteria.Filme + " ÀS " + bilheteria.Sessao + " | TOTAL: " + bilheteria.Calcula.ToString("C"));
-                    }
+                        tabControl1.SelectedIndex = 1;
+                        textBoxRecibo.Text = "---RECIBO---" + Environment.NewLine + Environment.NewLine +
+                        $"FILME: {bilheteria.Filme}" + Environment.NewLine + Environment.NewLine;
+                        textBoxRecibo.Text += "----------------------------" + Environment.NewLine;
+
+                    if (bilheteria.QtdIngressosMeia > 0)
+                        {
+                            textBoxRecibo.Text += $"MEIA ENTRADA - {bilheteria.QtdIngressosMeia} x {bilheteria.ValorMeia.ToString("C")} = " +
+                            $"{bilheteria.CalculaMeias.ToString("C")}" + Environment.NewLine;
+                        }
+
+                        if (bilheteria.QtdIngressosInteira > 0)
+                        {
+
+                            textBoxRecibo.Text += $"INTEIRA - {bilheteria.QtdIngressosInteira} x {bilheteria.ValorInteira.ToString("C")} = " +
+                            $"{bilheteria.CalculaInteiras.ToString("C")}" + Environment.NewLine;
+
+                        }
+
+                        textBoxRecibo.Text += "----------------------------";
+                        textBoxRecibo.Text += Environment.NewLine + Environment.NewLine + $"TOTAL: {bilheteria.CalculaTotal.ToString("C")}"; 
+
+
+                    //MessageBox.Show("VOCÊ IRÁ ASSISTIR: " + bilheteria.Filme + " ÀS " + bilheteria.Sessao + " | TOTAL: " + bilheteria.Calcula.ToString("C"));
+                }
                     else
                     {
                         MessageBox.Show("ESCOLHA PELO MENOS UMA ENTRADA MEIA OU INTEIRA");
