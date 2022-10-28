@@ -15,6 +15,7 @@ namespace BILHETERIA
         private string[] filmes = { "Adão Negro", "Aterrorizante 2", "Halloween Ends", "A Queda", "Sorria" };
         private string[] sessoes = { "16:20", "17:00", "20:00", "21:30" };
 
+
         public string Filme
         {
             get
