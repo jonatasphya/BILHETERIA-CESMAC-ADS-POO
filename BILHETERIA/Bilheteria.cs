@@ -42,17 +42,12 @@ namespace BILHETERIA
 
         public string[] Filmes
         {
-            get
-            {
-                return filmes;
-            }
+            get { return filmes; }
         }
 
         public string[] Sessoes
         {
-            get
-            {
-                return sessoes;
+            get { return sessoes; }
             }
         }
 
